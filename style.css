@@ -1,24 +1,52 @@
-.horizontal-section {
-    padding: 100px 0;
-    background-color: pink;
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 
-.sticky-wrapper {
-    width:100%;
-    overflow: hidden;
-    position: sticky;
-    top: 100px;
+body {
+    background-color: rgb(20, 20, 20);
+    overscroll-behavior: none;
 }
 
-.element-wrapper {
-    position: relative;
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2800px;
+    height: 100%;
+}
+
+.slider-inner {
+    position: absolute;
+    top: 15%;
+    height: 70%;
+    width: 100%;
     display: flex;
+    justify-content: space-around;
 }
 
-.element {
-    width: 500px;
-    height: 400px;
-    background-color: purple;
-    margin: 0 20px 0 0;
-    flex-shrink: 0;
+.item {
+    position: relative;
+    width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.img {
+    position: absolute;
+    left: -100px;
+    width: 600px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
 }
