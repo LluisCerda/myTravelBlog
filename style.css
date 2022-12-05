@@ -4,25 +4,19 @@
     box-sizing: border-box;
 }
 
+/*
 html::-webkit-scrollbar {
     display: none;
 }
+*/
 
 body {
     background-color: rgb(20, 20, 20);
     overscroll-behavior: none;
 }
 
-main {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vh;
-    height: 100vh;
-}
-
 .slider {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 2800px;
@@ -53,5 +47,4 @@ main {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: grayscale(100%);
 }

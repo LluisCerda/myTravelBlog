@@ -6,7 +6,7 @@ let current = 0;
 let target = 0;
 let ease = .05;
 
-window. addEventListener('resize', init);
+window.addEventListener('resize', init);
 
 images.forEach((img, idx) => {
     img.style.backgroundImage = `url(./images/${idx+1}.jpeg)`
@@ -44,5 +44,5 @@ function animateImages() {
     })
 }
 
-init();
 animate();
+init();
