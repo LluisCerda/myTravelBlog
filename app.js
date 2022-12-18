@@ -1,48 +1,45 @@
-let images = [...document.querySelectorAll('.img')];
-let slider = document.querySelector('.slider');
-let sliderWidth;
-let imageWidth;
-let current = 0;
-let target = 0;
-let ease = .05;
+const track = document.getElementById("image-track");
 
-window.addEventListener('resize', init);
+const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
 
-images.forEach((img, idx) => {
-    img.style.backgroundImage = `url(./images/${idx+1}.jpeg)`
-})
-
-function lerp(start, end, t) {
-    return start * (1-t) + end * t;
+const handleOnUp = () => {
+  track.dataset.mouseDownAt = "0";  
+  track.dataset.prevPercentage = track.dataset.percentage;
 }
 
-function setTransform(el, transform) {
-    el.style.transform = transform;
+const handleOnMove = e => {
+  if(track.dataset.mouseDownAt === "0") return;
+  
+  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+        maxDelta = window.innerWidth / 2;
+  
+  const percentage = (mouseDelta / maxDelta) * -100,
+        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+  
+  track.dataset.percentage = nextPercentage;
+  
+  track.animate({
+    transform: `translate(${nextPercentage}%, -50%)`
+  }, { duration: 1200, fill: "forwards" });
+  
+  for(const image of track.getElementsByClassName("image")) {
+    image.animate({
+      objectPosition: `${100 + nextPercentage}% center`
+    }, { duration: 1200, fill: "forwards" });
+  }
 }
 
-function init() {
-    sliderWidth = slider.getBoundingClientRect().width;
-    imageWidth = sliderWidth/ images.length;
-    document.body.style.height = `${sliderWidth - (window.innerWidth - window.innerHeight)}px`
-}
+/* -- Had to add extra lines for touch events -- */
 
-function animate() {
-    current = parseFloat(lerp(current, target, ease).toFixed(2));
-    target = window.scrollY;
-    setTransform(slider, `translateX(-${current}px)`);
-    animateImages();
-    requestAnimationFrame(animate);
-}
+window.onmousedown = e => handleOnDown(e);
 
-function animateImages() {
-    let ratio = current / imageWidth;
-    let intersectionRatio;
+window.ontouchstart = e => handleOnDown(e.touches[0]);
 
-    images.forEach((image, idx) => {
-        intersectionRatio = ratio - (idx * 0.7);
-        setTransform(image, `translateX(${intersectionRatio * 70}px)`)
-    })
-}
+window.onmouseup = e => handleOnUp(e);
 
-animate();
-init();
+window.ontouchend = e => handleOnUp(e.touches[0]);
+
+window.onmousemove = e => handleOnMove(e);
+
+window.ontouchmove = e => handleOnMove(e.touches[0]);
