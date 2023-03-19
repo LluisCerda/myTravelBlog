@@ -4,22 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myTravelBlog</title>
+    <title>elMundoEnUnaMochila</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-082W30JYZE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-082W30JYZE');
+    </script>
 </head>
 <body>
 
-    <div id="image-track" data-mouse-down-at="0"  data-prev-percentage="0">
-        <img class="image" src="images/1.jpeg" draggable="false" />
-        <img class="image" src="images/2.jpeg" draggable="false"/>
-        <img class="image" src="images/3.jpeg" draggable="false"/>
-        <img class="image" src="images/4.jpeg" draggable="false"/>
-        <img class="image" src="images/5.jpeg" draggable="false"/>
-        <img class="image" src="images/6.jpeg" draggable="false"/>
-    </div>
+    <div class="container">
 
-    <script src="app.js"></script>
+        <nav>
+            <input type="checkbox" id="nav" class="hidden">
+            <label for="nav" class="nav-btn">
+                <i></i>
+                <i></i>
+                <i></i>
+            </label>
+            <div class="logo">
+                <a href="#">elMundoEnUnaMochila</a>
+            </div>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="#">Trips</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
 </body>
 </html>
 
