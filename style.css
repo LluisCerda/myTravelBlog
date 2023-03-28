@@ -18,7 +18,7 @@ body {
     height: 100vh;
     font-family: 'Playfair Display', sans-serif;
     font-weight: 400;
-    background: url(https://github.com/LluisCerda/myTravelBlog/blob/main/compressed/6.jpeg);
+    background: url(images/6.jpeg);
     background-position: center;
     background-size: cover;
 }
@@ -66,7 +66,6 @@ nav ul li a {
     text-transform: none;
     text-decoration: none;
     font-size:14px;
-    letter-spacing: 1.2px;
     font-weight: 600;
 }
 
@@ -124,7 +123,6 @@ nav ul li a {
         color: #000;
         font-family: 14px;
         font-weight: 600;
-        letter-spacing: 1.2px;
         transform: translateX(-20px);
         transition: all 0.2s ease;
     }
